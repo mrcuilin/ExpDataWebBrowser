@@ -1,0 +1,22 @@
+<%-- any content can be specified here e.g.: --%>
+<%@ page pageEncoding="UTF-8" %>
+<%
+    String sqlDriver = "";
+    String ConnectURL = "";
+    String User = "root";
+    String Password = "";
+    
+        try {
+            Class.forName( sqlDriver );
+            Connection OneCn = DriverManager.getConnection( this.ConnectURL, this.User, this.Password);
+            return OneCn;
+        }
+        catch ( SQLException ex ) {
+            if( this.myLoger != null) {
+                try {
+                    myLoger.log(Level.SEVERE,"Error when create the DB COnnection).");
+                }
+                catch ( Exception ex2){}
+            }
+            return null;
+        }
